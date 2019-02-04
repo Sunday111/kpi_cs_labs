@@ -17,9 +17,10 @@ namespace lab_8
             InitializeComponent();
             Paint += Form1_Paint;
             pen = new Pen(Color.Black);
+            DoubleBuffered = true;
         }
 
-        unsafe void PointToLocalSpace(PointF p, PointF* outPoint)
+        unsafe void PointToGlobalSpace(PointF p, PointF* outPoint)
         {
             float px = LocalFlipX ? (1 - p.X) : p.X;
             float py = LocalFlipY ? (1 - p.Y) : p.Y;
@@ -30,8 +31,8 @@ namespace lab_8
         unsafe void DrawLine(PaintEventArgs e, PointF p1, PointF p2)
         {
             var points = stackalloc PointF[2];
-            PointToLocalSpace(p1, points + 0);
-            PointToLocalSpace(p2, points + 1);
+            PointToGlobalSpace(p1, points + 0);
+            PointToGlobalSpace(p2, points + 1);
             e.Graphics.DrawLine(pen, points[0], points[1]);
         }
 

@@ -66,7 +66,7 @@ namespace lab_2
                 }
 
                 // Get command index
-                Console.WriteLine("Enter command number or 0 to quit: ");
+                Console.Write("Enter command number or 0 to quit: ");
 
                 uint userInput;
                 bool inputIsValid = uint.TryParse(Console.ReadLine(), out userInput);

@@ -22,6 +22,7 @@ namespace lab_9
             public PointF p3;
         }
 
+        static readonly bool showRenderTime = true;
         static readonly uint DrawingDepth = 15;
         Pen pen;
 
@@ -30,7 +31,7 @@ namespace lab_9
             InitializeComponent();
             Paint += Form1_Paint;
             pen = Pens.Black;
-            DoubleBuffered = true;
+            //DoubleBuffered = true;
         }
 
         private void ConvertPoint(ref PointF p)
@@ -69,7 +70,7 @@ namespace lab_9
             }
         }
 
-        private void DrawSierpinskiTriangleLoop(Graphics g, uint maxDepth, Triangle root)
+        private void DrawSierpinskiTriangleTwoQueues(Graphics g, uint maxDepth, Triangle root)
         {
             var queue = new List<Triangle>();
             queue.Add(root);
@@ -122,9 +123,9 @@ namespace lab_9
         private void DrawSierpinskiTriangle(Graphics g)
         {
             var t = new Triangle(MakePoint(0.0f, 0.0f), MakePoint(0.5f, 1.0f), MakePoint(1.0f, 0.0f));
-            //DrawSierpinskiTriangle(g, 0, DrawingDepth, t);
-            DrawSierpinskiTriangleLoop(g, DrawingDepth, t);
+            DrawSierpinskiTriangle(g, 0, DrawingDepth, t);
             //DrawSierpinskiTriangleOneQueue(g, DrawingDepth, t);
+            //DrawSierpinskiTriangleTwoQueues(g, DrawingDepth, t);
         }
 
         private PointF MakePoint(float x, float y)
@@ -136,7 +137,6 @@ namespace lab_9
 
         private void Form1_Paint(object sender, PaintEventArgs e)
         {
-            bool showRenderTime = true;
 
             if(showRenderTime)
             {

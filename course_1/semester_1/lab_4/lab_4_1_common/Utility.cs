@@ -115,7 +115,7 @@ namespace lab_4_1_common
         {
             if (File.Exists(filename))
             {
-                return Utility.ReadJSON<T>(filename);
+                return ReadJSON<T>(filename);
             }
 
             return valueMaker();

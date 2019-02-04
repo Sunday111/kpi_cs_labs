@@ -43,7 +43,7 @@ namespace lab_4_2
             var m = MakeRandomMatrix();
             PrintMatrix(m);
 
-            long k = 1;
+            double k = 1;
             for (uint row = 0; row < m.Rows; ++row)
             {
                 for (uint column = m.Rows - row - 1; column < m.Columns; ++column)
