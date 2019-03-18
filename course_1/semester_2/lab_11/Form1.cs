@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
 using System.Timers;
 using System.Windows.Forms;
 
@@ -25,13 +26,17 @@ namespace lab_11
 
         private void Timer_Elapsed(object sender, ElapsedEventArgs e)
         {
-            if(!IsDisposed)
+            try
             {
                 Invoke((MethodInvoker)delegate
                 {
                     t += Dt * Tick.Milliseconds / 1000.0f;
                     Refresh();
                 });
+            }
+            catch(Exception)
+            {
+
             }
         }
 
